@@ -26,7 +26,7 @@ def run_setup():
         author='Dale Myers',
         author_email='dale@myers.io',
         license='MIT',
-        scripts=['bin/pngpadder'],
+        scripts=['command_line/pngpadder'],
 
         classifiers=[
             'Development Status :: 3 - Alpha',

@@ -1,0 +1,74 @@
+#!/usr/bin/env python2
+
+from argparse import ArgumentParser
+
+import pngpadder
+
+
+def _handle_arguments():
+    """Handle command line arguments and call the correct method."""
+
+    parser = ArgumentParser()
+    group = parser.add_mutually_exclusive_group(required=True)
+
+    group.add_argument(
+        "--to",
+        dest="to",
+        action="store",
+        default=None,
+        help="Pad the image to this size (in bytes)."
+    )
+
+    group.add_argument(
+        "--by",
+        dest="by",
+        action="store",
+        default=None,
+        help="Pad the image by this size (in bytes)."
+    )
+
+    parser.add_argument(
+        "-i",
+        "--image",
+        dest="input",
+        action="store",
+        default=None,
+        help="The path to the original image",
+        required=True
+    )
+
+    parser.add_argument(
+        "-o",
+        "--output",
+        dest="output",
+        action="store",
+        default=None,
+        help="The path to write the new image to",
+        required=True
+    )
+
+    args = parser.parse_args()
+
+    if args.to is not None:
+        size = args.to
+    else:
+        size = args.by
+
+    try:
+        size = int(size)
+    except ValueError:
+        print "Size value was not an integer"
+        sys.exit(1)
+
+    try:
+        if args.to is not None:
+            pngpadder.pad_to(args.input, args.output, size)
+        else:
+            pngpadder.pad_by(args.input, args.output, size)
+    except Exception as ex:
+        print ex.message
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    _handle_arguments()
