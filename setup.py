@@ -19,7 +19,7 @@ def run_setup():
 
     setup(
         name='pngpadder',
-        version='0.2',
+        version='0.3',
         description='A tool for padding PNG files to specific sizes',
         long_description=long_description,
         url='https://github.com/dalemyers/pngpadder',
