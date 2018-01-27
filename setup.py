@@ -19,14 +19,14 @@ def run_setup():
 
     setup(
         name='pngpadder',
-        version='0.2',
+        version='0.3',
         description='A tool for padding PNG files to specific sizes',
         long_description=long_description,
         url='https://github.com/dalemyers/pngpadder',
         author='Dale Myers',
         author_email='dale@myers.io',
         license='MIT',
-        scripts=['bin/pngpadder'],
+        scripts=['command_line/pngpadder'],
 
         classifiers=[
             'Development Status :: 3 - Alpha',
